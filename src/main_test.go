@@ -40,8 +40,15 @@ func clearTable() {
 
 const tableCreationQuery = `CREATE TABLE IF NOT EXISTS products
 (
-	id SERIAL,
-	name TEXT NOT NULL,
-	price NUMERIC(10,2) NOT NULL DEFAULT 0.00,
-	CONSTRAINT products_pkey PRIMARY KEY (id)
-}`
+ id SERIAL,
+ name TEXT NOT NULL,
+ price NUMERIC(10,2) NOT NULL DEFAULT 0.00,
+ CONSTRAINT products_pkey PRIMARY KEY (id)
+)`
+
+func TestAbs(t *testing.T) {
+	got := Abs(-1)
+	if got != 1 {
+		t.Errorf("Abs(-1) = %d; want 1", got)
+	}
+}

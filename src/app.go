@@ -15,9 +15,9 @@ type App struct {
 }
 
 func (a *App) Initialize(user, password, dbname string) {
-	fmt.Printf("exec: App.Initialize")
+	fmt.Println("exec: App.Initialize")
 	connectionString := fmt.Sprintf("user=%s password=%s dbname=%s sslmode=disable", user, password, dbname)
-	fmt.Printf("connectionString: %s", connectionString)
+	fmt.Printf("connectionString: %s \n", connectionString)
 
 	var err error
 	a.DB, err = sql.Open("postgres", connectionString)
@@ -26,6 +26,13 @@ func (a *App) Initialize(user, password, dbname string) {
 	}
 
 	a.Router = mux.NewRouter()
-	fmt.Printf("end: App.Initialize")
+	fmt.Println("end: App.Initialize")
 }
 func (a *App) Run(addr string) {}
+
+func Abs(x int64) int64 {
+	if x < 0 {
+		return -x
+	}
+	return x
+}
